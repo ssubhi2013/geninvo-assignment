@@ -1,0 +1,59 @@
+<div id="root-container">
+  <div id="top-header" align="center">
+    <b>Shop Tracking System</b>
+    <hr />
+    
+    <table border="2" cellpadding="5" cellspacing="0" align="center">
+      <tr>
+          <td colspan="4">
+              <table width="100%">
+                  <tr>
+                    <td>
+                      <input type="text" [(ngModel)]="shopName" placeholder="ShopName">
+                    </td>
+            
+                    <td>
+                      <select [(ngModel)]="shopCategory">
+                        <option value="General Store">General Store</option>
+                        <option value="Mall">Mall</option>
+                        <option value="Super Market">Super Market</option>
+                        <option value="Medical Store">Medical Store</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" [(ngModel)]="shopAddress" placeholder="Shop Address">
+                    </td>
+                  </tr>
+                  <td>
+                    <input type="text" [(ngModel)]="ownerName" placeholder="Owner Name">
+                  </td>
+                  <td>
+                    <button (click)="addNewShop()">Add New Shop</button>
+                  </td>
+                </table>
+          </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <input type="text" [(ngModel)]="searchText" placeholder="Search" size="45">
+          <button (click)="search()">Search</button>
+        </td>
+      </tr>
+      <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Address</th>
+      </tr>
+
+      <ng-container *ngIf="data">
+        <tr *ngFor="let prod of data.result; index as i">
+          <td>{{i+1}}</td>
+          <td>{{prod.shopName}}</td>
+          <td>{{prod.shopCategory}}</td>
+          <td>{{prod.shopAddress}}</td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</div>
